@@ -1,0 +1,10 @@
+#!name=VVebo UID 实验修复
+#!desc=实验版：需先上传脚本到 ILFPhilK/vvebo-fix 的 main 分支；请关闭旧模块避免冲突。
+[Script]
+记录目标用户 = type=http-request, pattern=^https://api\.weibo\.cn/2/users/show\?, script-path=https://raw.githubusercontent.com/ILFPhilK/vvebo-fix/main/vvebo-uid-fix.js, timeout=30
+补充时间线UID = type=http-request, pattern=^https://api\.weibo\.cn/2/statuses/user_timeline\?, script-path=https://raw.githubusercontent.com/ILFPhilK/vvebo-fix/main/vvebo-uid-fix.js, timeout=30
+修复时间线1 = type=http-request, pattern=^https://api\.weibo\.cn/2/remind/unread_count\?, script-path=https://raw.githubusercontent.com/suiyuran/stash/main/scripts/fix-vvebo-user-timeline.js, timeout=30
+修复时间线3 = type=http-response, pattern=^https://api\.weibo\.cn/2/profile/statuses/tab\?, requires-body=true, script-path=https://raw.githubusercontent.com/suiyuran/stash/main/scripts/fix-vvebo-user-timeline.js, timeout=30
+修复我的页面 = type=http-response, pattern=^https://api\.weibo\.cn/2/cardlist\?, requires-body=true, script-path=https://raw.githubusercontent.com/suiyuran/stash/main/scripts/fix-vvebo-fans.js, timeout=30
+[MITM]
+hostname = %APPEND% api.weibo.cn
