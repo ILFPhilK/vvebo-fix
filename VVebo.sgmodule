@@ -1,5 +1,5 @@
-#!name=VVebo 调试版
-#!desc=用户 UID 与时间线转换通知调试
+#!name=VVebo 稳定版
+#!desc=修复 VVebo 他人主页时间线（基于已验证 V3）
 [Script]
 VVebo 捕获 UID = type=http-request, pattern=^https://api\.weibo\.cn/2/users/show\?, script-path=https://raw.githubusercontent.com/ILFPhilK/vvebo-fix/main/vvebo-timeline.js, timeout=30
 VVebo 时间线请求 = type=http-request, pattern=^https://api\.weibo\.cn/2/statuses/user_timeline\?, script-path=https://raw.githubusercontent.com/ILFPhilK/vvebo-fix/main/vvebo-timeline.js, timeout=30

@@ -3,7 +3,7 @@ const UID_KEY = 'vvebo_target_uid';
 const url = $request.url;
 const isRequest = typeof $response === 'undefined';
 function uidFromUrl(s) { const m = s.match(/[?&]uid=(\d+)(?:&|$)/); return m ? m[1] : null; }
-function notify(title, detail) { console.log('[VVebo] ' + title + ': ' + detail); if (typeof $notification !== 'undefined') $notification.post('VVebo 调试', title, detail); }
+function notify(title, detail) { console.log('[VVebo] ' + title + ': ' + detail); }
 function finish(x) { $done(x || {}); }
 if (isRequest) {
   if (/\/2\/users\/show\?/.test(url)) {
