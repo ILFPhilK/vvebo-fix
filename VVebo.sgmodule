@@ -1,9 +1,8 @@
-#!name=VVebo 他人主页修复 v2
-#!desc=记录用户UID、转换微博时间线接口及响应；测试版
+#!name=VVebo 调试版
+#!desc=用户 UID 与时间线转换通知调试
 [Script]
-VVebo记录用户 = type=http-request, pattern=^https://api\.weibo\.cn/2/(users/show|remind/unread_count)\?, script-path=https://raw.githubusercontent.com/ILFPhilK/vvebo-fix/main/vvebo-timeline.js, timeout=30
-VVebo转换时间线请求 = type=http-request, pattern=^https://api\.weibo\.cn/2/statuses/user_timeline\?, script-path=https://raw.githubusercontent.com/ILFPhilK/vvebo-fix/main/vvebo-timeline.js, timeout=30
-VVebo转换时间线响应 = type=http-response, pattern=^https://api\.weibo\.cn/2/profile/statuses/tab\?, requires-body=true, script-path=https://raw.githubusercontent.com/ILFPhilK/vvebo-fix/main/vvebo-timeline.js, timeout=30
-VVebo修复我的页面 = type=http-response, pattern=^https://api\.weibo\.cn/2/cardlist\?, requires-body=true, script-path=https://raw.githubusercontent.com/suiyuran/stash/main/scripts/fix-vvebo-fans.js, timeout=30
+VVebo 捕获 UID = type=http-request, pattern=^https://api\.weibo\.cn/2/users/show\?, script-path=https://raw.githubusercontent.com/ILFPhilK/vvebo-fix/main/vvebo-timeline.js, timeout=30
+VVebo 时间线请求 = type=http-request, pattern=^https://api\.weibo\.cn/2/statuses/user_timeline\?, script-path=https://raw.githubusercontent.com/ILFPhilK/vvebo-fix/main/vvebo-timeline.js, timeout=30
+VVebo 时间线响应 = type=http-response, pattern=^https://api\.weibo\.cn/2/(statuses/user_timeline|profile/statuses/tab)\?, requires-body=true, script-path=https://raw.githubusercontent.com/ILFPhilK/vvebo-fix/main/vvebo-timeline.js, timeout=30
 [MITM]
 hostname = %APPEND% api.weibo.cn
